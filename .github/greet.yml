@@ -1,0 +1,5 @@
+name: greet
+on: push
+jobs:
+  steps:
+    echo "say hello"
