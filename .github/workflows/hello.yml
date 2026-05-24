@@ -6,11 +6,13 @@ jobs:
     steps:
       - run: echo "Hello from my new repo!"
   create-test-file:
+    needs: greet
     runs-on: ubuntu-latest
     steps:
       - run: echo "This is a test file created by the workflow." >  test.txt
       - run: cat test.txt
   list-files:
+    needs: create-test-file
     runs-on: ubuntu-latest
     steps:
       - run: ls -la

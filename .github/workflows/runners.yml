@@ -1,0 +1,18 @@
+name: Running multiple runners jobs
+on: push
+
+jobs:
+    runner1:
+        runs-on: ubuntu-latest
+        steps:
+            - run: echo "This is runner 1"
+    runner2:
+        needs: runner1
+        runs-on: windows-latest
+        steps:
+            - run: echo "This is runner 2"
+    runner3:
+        needs: runner2
+        runs-on: macos-latest
+        steps:
+            - run: echo "This is runner 3"
