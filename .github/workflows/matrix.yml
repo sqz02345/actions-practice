@@ -10,6 +10,8 @@ jobs:
         env: [dev, prod]
         exclude:
           - os: windows-latest
+            version: 2.0
+            env: prod
             
     steps:
       - run: echo "This is a job running on ${{ matrix.os }} with version ${{ matrix.version }} in ${{ matrix.env }} environment."
