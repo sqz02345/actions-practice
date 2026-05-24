@@ -8,4 +8,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "This workflow runs on push, on a schedule, and can be
+      - run: |
+            echo "This workflow runs on push, on a schedule, and can be triggered manually"
+            echo "Current time: $(date)"
+            echo "who triggered this workflow: ${{ github.actor }}"
+            echo "Event that triggered this workflow: ${{ github.event_name }}"
