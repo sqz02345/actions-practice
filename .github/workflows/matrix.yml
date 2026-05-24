@@ -12,4 +12,4 @@ jobs:
           - os: windows-latest
             
     steps:
-      - run: echo "This is a job running on ${{ matrix.os }}"ß
+      - run: echo "This is a job running on ${{ matrix.os }} with version ${{ matrix.version }} in ${{ matrix.env }} environment."
