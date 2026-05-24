@@ -5,14 +5,19 @@ jobs:
     runner1:
         runs-on: ubuntu-latest
         steps:
-            - run: echo "This is runner 1"
-    runner2:
-        needs: runner1
+            - run: |
+                echo "This is runner 1" 
+                echo cat /etc/os-release   
+    runner2:  
         runs-on: windows-latest
         steps:
-            - run: echo "This is runner 2"
+            - run: |
+                echo "This is runner 2"
+                systeminfo | findstr /B /C:"OS Name" /C:"OS Version"
     runner3:
-        needs: runner2
+        
         runs-on: macos-latest
         steps:
-            - run: echo "This is runner 3"
+            - run: |
+                echo "This is runner 3"
+                sw_vers | grep "ProductName\|ProductVersion"
