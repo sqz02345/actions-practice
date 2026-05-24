@@ -2,16 +2,19 @@ name: matrix strategy
 on: push
 jobs:
   build:
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-        version: [1.0, 2.0]
+        node-version: [18, 20, 22]
         env: [dev, prod]
-        exclude:
-          - os: windows-latest
-            version: 2.0
-            env: prod
-            
     steps:
-      - run: echo "This is a job running on ${{ matrix.os }} with version ${{ matrix.version }} in ${{ matrix.env }} environment."
+      - uses: actions/checkout@v6
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Display environment
+        run: |
+          echo "Environment: ${{ matrix.env }}"
+      - name: Install dependencies
+        run: node -v
