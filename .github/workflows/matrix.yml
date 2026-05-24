@@ -1,0 +1,10 @@
+name: matrix strategy
+on: push
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    steps:
+      - run: echo "This is a job running on ${{ matrix.os }}"
