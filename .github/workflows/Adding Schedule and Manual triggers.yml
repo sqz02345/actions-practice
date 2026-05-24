@@ -1,0 +1,11 @@
+name: Adding Schedule and Manual triggers
+on: 
+  push:
+  schedule:
+    - cron: '0 0 * * *' # Runs every day at midnight
+  workflow_dispatch: # Allows manual trigger from GitHub UI
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "This workflow runs on push, on a schedule, and can be
