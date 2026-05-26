@@ -1,0 +1,18 @@
+name: Practise with actions
+on: push
+jobs:
+    runner1:
+        runs-on: ubuntu-latest
+        steps:
+            - run: |
+                echo "This is runner 1" >> report.txt
+                cat /etc/os-release 
+            - name: Upload the file using actions/upload-artifact@v3
+              uses: actions/upload-artifact@v4
+              id: artifact-upload-step
+              with:
+                name: runner1-report
+                path: report.txt
+            - name: output artifact id
+              run: echo 'Artifact ID is ${{ steps.artifact-upload-step.outputs.artifact-id }}'                 
+        
